@@ -1,0 +1,29 @@
+/* @tailwind base; */
+
+.inline-block {
+  display: inline-block
+}
+
+.contents {
+  display: contents
+}
+
+.cursor-pointer {
+  cursor: pointer
+}
+
+.rounded-full {
+  border-radius: 9999px
+}
+
+.border {
+  border-width: 1px
+}
+
+.border-0 {
+  border-width: 0px
+}
+
+.font-bold {
+  font-weight: 700
+}
