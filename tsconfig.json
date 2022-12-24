@@ -4,8 +4,6 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -13,12 +11,18 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "declaration": true,
-    "noEmit": false,
+    "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "dist"
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "declarationMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "react-component-library": ["src/index.ts"],
+    },
+    "typeRoots": ["node_modules/@types", "src/index.d.ts"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/testSetup/*", "src/types", "src/stories"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

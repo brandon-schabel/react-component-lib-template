@@ -1,13 +1,17 @@
-import classNames from "classnames";
 import { ComponentProps } from "react";
 import "../../src/index.css";
-// import './button.css';
+
+export const buttonVariants = {
+  primary: "rcl-button--primary bg-blue-500 hover:bg-blue-700 text-white",
+  secondary: "rcl-button--secondary bg-gray-500 hover:bg-gray-700 text-white",
+  tertiary: "rcl-button--tertiary bg-white hover:bg-gray-100 text-gray-800",
+};
 
 interface ButtonProps extends ComponentProps<"button"> {
   /**
    * Is this the principal call to action on the page?
    */
-  primary?: boolean;
+  variant?: keyof typeof buttonVariants;
   /**
    * How large should the button be?
    */
@@ -26,21 +30,18 @@ interface ButtonProps extends ComponentProps<"button"> {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  primary = false,
   size = "medium",
   label,
+  variant = "primary",
   ...props
 }: ButtonProps) => {
-
-
   return (
     <button
       type="button"
       {...props}
-      className={classNames(
-        "rcl-button font-nunito-sans font-bold border-0 rounded-full cursor-pointer inline-block",
-        props.className
-      )}
+      className={`rcl-button font-nunito-sans font-bold border-0 rounded-full cursor-pointer inline-block ${
+        buttonVariants[variant] || ""
+      } ${props.className}`}
     >
       {label}
     </button>
