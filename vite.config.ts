@@ -21,7 +21,15 @@ export default defineConfig((configEnv) => ({
       fileName: (format) => `react-component-library.${format}.js`,
     },
     rollupOptions: {
+      // externalize dependencies that shouldn't be bundled,
+      // e.g. react and react-dom should be peer dependencies
       external: [...Object.keys(packageJson.peerDependencies)],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      },
     },
   },
 }));
