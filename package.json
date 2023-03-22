@@ -1,29 +1,29 @@
 {
   "name": "react-component-library",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.11",
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/react-component-library.umd.js",
+      "require": "./dist/react-component-library.cjs",
       "import": "./dist/react-component-library.es.js"
     },
-    "./style.css": {
-      "require": "./dist/style.css",
-      "default": "./dist/style.css"
+    "./styles.css": {
+      "require": "./dist/styles.css",
+      "default": "./dist/styles.css"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "concurrently \"npm run build:css\" \"tsc && vite build\"",
-    "build:css": "tailwindcss -m -i ./src/tailwind-entry.css -o ./dist/index.css",
+    "build": "vite build && npm run build:css",
+    "build:css": "tailwindcss -m -i ./src/tailwind-entry.css -o ./dist/styles.css",
     "storybook": "concurrently \"npm run storybook:css\" \"storybook dev -p 6006\"",
     "storybook:css": "tailwindcss -w -i ./src/tailwind-entry.css -o ./src/index.css",
     "build-storybook": "concurrently \"npm run build-storybook:css\" \"storybook build\"",
-    "build-storybook:css": "tailwindcss -m -i ./src/tailwind-entry.css -o ./src/index.css"
+    "build-storybook:css": "tailwindcss -m -i ./src/tailwind-entry.css -o ./src/index.css",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
